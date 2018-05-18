@@ -320,6 +320,8 @@ definitions:
             type: "string"
       avatar-id:
         type: "string"
+      badges:
+        type: "array"
     xml:
       name: "Profile"
   Message:
