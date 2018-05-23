@@ -23,8 +23,24 @@ schemes:
 
 ### PATHS ###
 paths:
+  /healthcheck:
+    get:
+      operationId: "healthcheckGet"
+      tags:
+        - "health"
+      summary: "Check Server status"
+      produces:
+        - "application/json"
+      responses:
+        '200':
+          description: Server is healthy
+        '501':
+          description: Server is unhealthy
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /offering:
     post:
+      operationId: "offeringPost"
       tags:
       - "offering"
       summary: "Add a new offering"
@@ -51,8 +67,9 @@ paths:
       - in: path
         required: true
         name: id
-        type: integer
+        type: string
     get:
+      operationId: offeringIdGet
       tags:
       - "offering"
       summary: "Display an offering"
@@ -68,6 +85,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     put:
+      operationId: offeringIdPut
       tags:
       - "offering"
       summary: "Update an offering"
@@ -81,6 +99,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
+      operationId: offeringIdDelete
       tags:
       - "offering"
       summary: "Delete an offering"
@@ -96,6 +115,7 @@ paths:
 
   /profile:
     post:
+      operationId: profilePost
       tags:
       - "profile"
       summary: "Add a new profile"
@@ -122,8 +142,9 @@ paths:
       - in: path
         required: true
         name: id
-        type: integer
+        type: string
     get:
+      operationId: profileIdGet
       tags:
       - "profile"
       summary: "Display an profile"
@@ -139,6 +160,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     put:
+      operationId: profileIdPut
       tags:
       - "profile"
       summary: "Update an profile"
@@ -152,6 +174,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
+      operationId: profileIdDelete
       tags:
       - "profile"
       summary: "Delete an profile"
@@ -167,6 +190,7 @@ paths:
           
   /message:
     post:
+      operationId: messagePost
       tags:
       - "message"
       summary: "Add a new message"
@@ -193,8 +217,9 @@ paths:
       - in: path
         required: true
         name: id
-        type: integer
+        type: string
     get:
+      operationId: messageIdGet
       tags:
       - "message"
       summary: "Display an message"
@@ -210,6 +235,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     put:
+      operationId: messageIdPut
       tags:
       - "message"
       summary: "Update an message"
@@ -223,6 +249,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
+      operationId: messageIdDelete
       tags:
       - "message"
       summary: "Delete an message"
@@ -238,6 +265,7 @@ paths:
     
   /feed:
     get:
+      operationId: feedGet
       parameters:
         - in: query
           name: location
@@ -245,7 +273,7 @@ paths:
           type: string
       tags:
       - "feed"
-      summary: "Display an feed"
+      summary: "Display a feed"
       consumes:
       - "application/json"
       produces:
@@ -254,7 +282,7 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Message'
+            $ref: '#/definitions/Feed'
         '404':
           $ref: '#/responses/InvalidParameterInput'
   
@@ -276,11 +304,11 @@ responses:
   NotFound:
     description: The specified resource was not found
     schema:
-      $ref: "#/definitions/Error"
+      $ref: "#/definitions/ErrorModel"
   Unauthorized:
     description: Unauthorized
     schema:
-      $ref: "#/definitions/Error"          
+      $ref: "#/definitions/ErrorModel"          
   
   InvalidParameterInput:
     description: Invalid parameter input was passed
@@ -322,6 +350,8 @@ definitions:
         type: "string"
       badges:
         type: "array"
+        items:
+          type: "string"
     xml:
       name: "Profile"
   Message:
@@ -377,7 +407,7 @@ definitions:
       $ref: '#/definitions/Offering'
     xml:
       name: "Feed"
-  Error:
+  ErrorModel:
     required:
       - code
       - message
