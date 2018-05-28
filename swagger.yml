@@ -321,8 +321,7 @@ definitions:
     type: "object"
     properties:
       id:
-        type: "integer"
-        format: "int64"
+        type: "string"
       firstname:
         type: "string"
       lastname:
@@ -358,8 +357,7 @@ definitions:
     type: "object"
     properties:
       id:
-        type: "integer"
-        format: "int64"
+        type: "string"
       from-id:
         type: "integer"
         format: "int64"
@@ -382,8 +380,7 @@ definitions:
     type: "object"
     properties:
       id:
-        type: "integer"
-        format: "int64"
+        type: "string"
       name:
         type: "string"
       creator-id:
@@ -427,4 +424,3 @@ definitions:
     required:
       - attribute
       - message       
-
