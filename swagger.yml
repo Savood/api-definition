@@ -1,13 +1,13 @@
 swagger: "2.0"
 info:
   title: "Savood"
-  version: "1.0.0"
+  version: "1.0"
   description: "denn nur lebendiges food tut gut"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "savood.com"
-basePath: "/v2"
+# host: "savood.com"
+# basePath: "/v2"
 
 tags:
 - name: "profile"
@@ -18,8 +18,8 @@ tags:
   description: "Collection of nearby offerings"
 - name: "message"
   description: "Operations about user"
-schemes:
-- "http"
+# schemes:
+# - "http"
 
 ### PATHS ###
 paths:
@@ -187,7 +187,7 @@ paths:
           description: Removed; No response.
         '404':
           $ref: '#/responses/InvalidParameterInput'
-          
+
   /message:
     post:
       operationId: messagePost
@@ -262,7 +262,7 @@ paths:
           description: Removed; No response.
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    
+
   /feed:
     get:
       operationId: feedGet
@@ -285,7 +285,7 @@ paths:
             $ref: '#/definitions/Feed'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-  
+
 securityDefinitions:
   petstore_auth:
     type: "oauth2"
@@ -298,7 +298,7 @@ securityDefinitions:
     type: "apiKey"
     name: "api_key"
     in: "header"
-    
+
 ### RESPONSES ###
 responses:
   NotFound:
@@ -308,8 +308,8 @@ responses:
   Unauthorized:
     description: Unauthorized
     schema:
-      $ref: "#/definitions/ErrorModel"          
-  
+      $ref: "#/definitions/ErrorModel"
+
   InvalidParameterInput:
     description: Invalid parameter input was passed
     schema:
@@ -363,10 +363,10 @@ definitions:
       email: apiteam@swagger.io
       phone: 202-555-0191
       address:
-        street: Musterstraße
-        number: 1337
-        zip: 42069
-        city: Musterstadt
+          street: Musterstraße
+          number: 1337
+          zip: 42069
+          city: Musterstadt
       avatar-id: ''
       background-id: ''
       description: I save the wrap and the world
@@ -441,4 +441,10 @@ definitions:
         type: string
     required:
       - attribute
-      - message       
+      - message
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /TimMaa/Savood/1.0
+schemes:
+ - https
+ - http
