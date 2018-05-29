@@ -40,7 +40,7 @@ paths:
             $ref: "#/definitions/ErrorModel"
   /offering:
     post:
-      operationId: "offeringPost"
+      operationId: createNewOffering
       tags:
       - "offering"
       summary: "Add a new offering"
@@ -69,7 +69,7 @@ paths:
         name: id
         type: string
     get:
-      operationId: offeringIdGet
+      operationId: getOfferingById
       tags:
       - "offering"
       summary: "Display an offering"
@@ -84,8 +84,8 @@ paths:
             $ref: '#/definitions/Offering'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    put:
-      operationId: offeringIdPut
+    patch:
+      operationId: updateOfferingById
       tags:
       - "offering"
       summary: "Update an offering"
@@ -99,7 +99,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: offeringIdDelete
+      operationId: deleteOfferingById
       tags:
       - "offering"
       summary: "Delete an offering"
@@ -115,7 +115,7 @@ paths:
 
   /profile:
     post:
-      operationId: profilePost
+      operationId: createNewProfile
       tags:
       - "profile"
       summary: "Add a new profile"
@@ -144,10 +144,10 @@ paths:
         name: id
         type: string
     get:
-      operationId: profileIdGet
+      operationId: getProfileById
       tags:
       - "profile"
-      summary: "Display an profile"
+      summary: "Display a profile"
       consumes:
       - "application/json"
       produces:
@@ -159,11 +159,11 @@ paths:
             $ref: '#/definitions/Profile'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    put:
-      operationId: profileIdPut
+    patch:
+      operationId: updateProfileById
       tags:
       - "profile"
-      summary: "Update an profile"
+      summary: "Update a profile"
       consumes:
       - "application/json"
       produces:
@@ -174,10 +174,10 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: profileIdDelete
+      operationId: deleteProfileById
       tags:
       - "profile"
-      summary: "Delete an profile"
+      summary: "Delete a profile"
       consumes:
       - "application/json"
       produces:
@@ -190,7 +190,7 @@ paths:
 
   /message:
     post:
-      operationId: messagePost
+      operationId: createNewMessage
       tags:
       - "message"
       summary: "Add a new message"
@@ -219,10 +219,10 @@ paths:
         name: id
         type: string
     get:
-      operationId: messageIdGet
+      operationId: getMessageById
       tags:
       - "message"
-      summary: "Display an message"
+      summary: "Display a message"
       consumes:
       - "application/json"
       produces:
@@ -234,11 +234,11 @@ paths:
             $ref: '#/definitions/Message'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    put:
-      operationId: messageIdPut
+    patch:
+      operationId: updateMessageById
       tags:
       - "message"
-      summary: "Update an message"
+      summary: "Update a message"
       consumes:
       - "application/json"
       produces:
@@ -249,10 +249,10 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: messageIdDelete
+      operationId: deleteMessageById
       tags:
       - "message"
-      summary: "Delete an message"
+      summary: "Delete a message"
       consumes:
       - "application/json"
       produces:
@@ -265,7 +265,7 @@ paths:
 
   /feed:
     get:
-      operationId: feedGet
+      operationId: getFeed
       parameters:
         - in: query
           name: location
@@ -401,6 +401,8 @@ definitions:
         type: "string"
       name:
         type: "string"
+      header:
+        type: "string"
       creator-id:
         type: "integer"
         format: "int64"
@@ -414,8 +416,36 @@ definitions:
       requested-by:
         type: "integer"
         format: "int64"
+      total_likes:
+        type: "string"
+      total_savoods:
+        type: "string"
+      total_comments:
+        type: "string"
+      comments:
+        type: array
+        items:
+          $ref: '#/definitions/Comment'
+      time:
+        type: "string"
+        format: "date-time"
     xml:
       name: "Offering"
+  Comment:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      creator-id:
+        type: "integer"
+        format: "int64"
+      content:
+        type: "string"
+      time:
+        type: "string"
+        format: "date-time"
+    xml:
+      name: "Comment"
   Feed:
     type: "array"
     items:
