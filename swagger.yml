@@ -84,7 +84,7 @@ paths:
             $ref: '#/definitions/Offering'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    put:
+    patch:
       operationId: updateOfferingById
       tags:
       - "offering"
@@ -159,7 +159,7 @@ paths:
             $ref: '#/definitions/Profile'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    put:
+    patch:
       operationId: updateProfileById
       tags:
       - "profile"
@@ -234,7 +234,7 @@ paths:
             $ref: '#/definitions/Message'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    put:
+    patch:
       operationId: updateMessageById
       tags:
       - "message"
