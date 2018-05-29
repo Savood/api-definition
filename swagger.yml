@@ -93,6 +93,13 @@ paths:
       - "application/json"
       produces:
       - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "New parameters of the offering"
+        required: true
+        schema:
+          $ref: "#/definitions/Offering"
       responses:
         '204':
           description: Accepted; No response.
@@ -126,7 +133,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "Offering that needs to be added"
+        description: "Profile that needs to be added"
         required: true
         schema:
           $ref: "#/definitions/Profile"
@@ -168,6 +175,13 @@ paths:
       - "application/json"
       produces:
       - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "New parameters of the profile"
+        required: true
+        schema:
+          $ref: "#/definitions/Profile"
       responses:
         '204':
           description: Accepted; No response.
@@ -243,6 +257,13 @@ paths:
       - "application/json"
       produces:
       - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "New parameters of the message"
+        required: true
+        schema:
+          $ref: "#/definitions/Message"
       responses:
         '204':
           description: Accepted; No response.
