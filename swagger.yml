@@ -147,7 +147,7 @@ paths:
       operationId: getProfileById
       tags:
       - "profile"
-      summary: "Display an profile"
+      summary: "Display a profile"
       consumes:
       - "application/json"
       produces:
@@ -163,7 +163,7 @@ paths:
       operationId: updateProfileById
       tags:
       - "profile"
-      summary: "Update an profile"
+      summary: "Update a profile"
       consumes:
       - "application/json"
       produces:
@@ -177,7 +177,7 @@ paths:
       operationId: deleteProfileById
       tags:
       - "profile"
-      summary: "Delete an profile"
+      summary: "Delete a profile"
       consumes:
       - "application/json"
       produces:
@@ -222,7 +222,7 @@ paths:
       operationId: getMessageById
       tags:
       - "message"
-      summary: "Display an message"
+      summary: "Display a message"
       consumes:
       - "application/json"
       produces:
@@ -238,7 +238,7 @@ paths:
       operationId: updateMessageById
       tags:
       - "message"
-      summary: "Update an message"
+      summary: "Update a message"
       consumes:
       - "application/json"
       produces:
@@ -252,7 +252,7 @@ paths:
       operationId: deleteMessageById
       tags:
       - "message"
-      summary: "Delete an message"
+      summary: "Delete a message"
       consumes:
       - "application/json"
       produces:
@@ -401,6 +401,8 @@ definitions:
         type: "string"
       name:
         type: "string"
+      header:
+        type: "string"
       creator-id:
         type: "integer"
         format: "int64"
@@ -414,8 +416,36 @@ definitions:
       requested-by:
         type: "integer"
         format: "int64"
+      total_likes:
+        type: "string"
+      total_savoods:
+        type: "string"
+      total_comments:
+        type: "string"
+      comments:
+        type: array
+        items:
+          $ref: '#/definitions/Comment'
+      time:
+        type: "string"
+        format: "date-time"
     xml:
       name: "Offering"
+  Comment:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      creator-id:
+        type: "integer"
+        format: "int64"
+      content:
+        type: "string"
+      time:
+        type: "string"
+        format: "date-time"
+    xml:
+      name: "Comment"
   Feed:
     type: "array"
     items:
