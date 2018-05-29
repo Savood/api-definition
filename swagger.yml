@@ -40,7 +40,7 @@ paths:
             $ref: "#/definitions/ErrorModel"
   /offering:
     post:
-      operationId: "offeringPost"
+      operationId: createNewOffering
       tags:
       - "offering"
       summary: "Add a new offering"
@@ -69,7 +69,7 @@ paths:
         name: id
         type: string
     get:
-      operationId: offeringIdGet
+      operationId: getOfferingById
       tags:
       - "offering"
       summary: "Display an offering"
@@ -85,7 +85,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     put:
-      operationId: offeringIdPut
+      operationId: updateOfferingById
       tags:
       - "offering"
       summary: "Update an offering"
@@ -99,7 +99,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: offeringIdDelete
+      operationId: deleteOfferingById
       tags:
       - "offering"
       summary: "Delete an offering"
@@ -115,7 +115,7 @@ paths:
 
   /profile:
     post:
-      operationId: profilePost
+      operationId: createNewProfile
       tags:
       - "profile"
       summary: "Add a new profile"
@@ -144,7 +144,7 @@ paths:
         name: id
         type: string
     get:
-      operationId: profileIdGet
+      operationId: getProfileById
       tags:
       - "profile"
       summary: "Display an profile"
@@ -160,7 +160,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     put:
-      operationId: profileIdPut
+      operationId: updateProfileById
       tags:
       - "profile"
       summary: "Update an profile"
@@ -174,7 +174,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: profileIdDelete
+      operationId: deleteProfileById
       tags:
       - "profile"
       summary: "Delete an profile"
@@ -190,7 +190,7 @@ paths:
 
   /message:
     post:
-      operationId: messagePost
+      operationId: createNewMessage
       tags:
       - "message"
       summary: "Add a new message"
@@ -219,7 +219,7 @@ paths:
         name: id
         type: string
     get:
-      operationId: messageIdGet
+      operationId: getMessageById
       tags:
       - "message"
       summary: "Display an message"
@@ -235,7 +235,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     put:
-      operationId: messageIdPut
+      operationId: updateMessageById
       tags:
       - "message"
       summary: "Update an message"
@@ -249,7 +249,7 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: messageIdDelete
+      operationId: deleteMessageById
       tags:
       - "message"
       summary: "Delete an message"
@@ -265,7 +265,7 @@ paths:
 
   /feed:
     get:
-      operationId: feedGet
+      operationId: getFeed
       parameters:
         - in: query
           name: location
