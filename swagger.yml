@@ -10,14 +10,12 @@ info:
 # basePath: "/v2"
 
 tags:
-- name: "profile"
-  description: "Management of profiles and user representation"
-- name: "offering"
+- name: "users"
+  description: "Management of users"
+- name: "offerings"
   description: "Management of offered food items"
-- name: "feed"
-  description: "Collection of nearby offerings"
 - name: "message"
-  description: "Operations about user"
+  description: "Operations about users"
 # schemes:
 # - "http"
 
@@ -38,11 +36,63 @@ paths:
           description: Server is unhealthy
           schema:
             $ref: "#/definitions/ErrorModel"
-  /offering:
+  /feed:
+    get:
+      operationId: getFeed
+      parameters:
+        - in: query
+          name: location
+          required: true
+          type: string
+        - in: query
+          description: Distance in Meters
+          name: distance
+          required: true
+          type: number
+      tags:
+      - "offerings"
+      summary: "Display a feed of nearby offerings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: Object found and returned
+          schema:
+            $ref: '#/definitions/Offerings'
+        '404':
+          $ref: '#/responses/InvalidParameterInput'
+  /offerings:
+    get:
+      operationId: getOfferings
+      parameters:
+        - in: query
+          description: Filteres offerings by owned or requested
+          name: filter
+          required: false
+          type: string
+          enum:
+            - owned
+            - requested
+      tags:
+      - "offerings"
+      summary: "Display a feed of nearby offerings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: Object found and returned
+          schema:
+            $ref: '#/definitions/Offerings'
+        '404':
+          $ref: '#/responses/InvalidParameterInput'
     post:
       operationId: createNewOffering
       tags:
-      - "offering"
+      - "offerings"
       summary: "Add a new offering"
       consumes:
       - "application/json"
@@ -62,7 +112,7 @@ paths:
             $ref: '#/definitions/Offering'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-  /offering/{id}:
+  /offerings/{id}:
     parameters:
       - in: path
         required: true
@@ -71,7 +121,7 @@ paths:
     get:
       operationId: getOfferingById
       tags:
-      - "offering"
+      - "offerings"
       summary: "Display an offering"
       consumes:
       - "application/json"
@@ -87,7 +137,7 @@ paths:
     patch:
       operationId: updateOfferingById
       tags:
-      - "offering"
+      - "offerings"
       summary: "Update an offering"
       consumes:
       - "application/json"
@@ -108,7 +158,7 @@ paths:
     delete:
       operationId: deleteOfferingById
       tags:
-      - "offering"
+      - "offerings"
       summary: "Delete an offering"
       consumes:
       - "application/json"
@@ -119,42 +169,18 @@ paths:
           description: Removed; No response.
         '404':
           $ref: '#/responses/InvalidParameterInput'
-
-  /profile:
-    post:
-      operationId: createNewProfile
-      tags:
-      - "profile"
-      summary: "Add a new profile"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Profile that needs to be added"
-        required: true
-        schema:
-          $ref: "#/definitions/Profile"
-      responses:
-        '200':
-          description: Object found and returned
-          schema:
-            $ref: '#/definitions/Profile'
-        '404':
-          $ref: '#/responses/InvalidParameterInput'
-  /profile/{id}:
+  /offerings/{id}/chats:
     parameters:
       - in: path
         required: true
         name: id
         type: string
     get:
-      operationId: getProfileById
+      operationId: getAllChatsForOffering
       tags:
-      - "profile"
-      summary: "Display a profile"
+        - "offerings"
+        - "messages"
+      summary: "Display a user"
       consumes:
       - "application/json"
       produces:
@@ -163,14 +189,15 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Profile'
+            $ref: '#/definitions/Chats'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-    patch:
-      operationId: updateProfileById
+  /users:
+    post:
+      operationId: createNewUser
       tags:
-      - "profile"
-      summary: "Update a profile"
+      - "users"
+      summary: "Add a new user"
       consumes:
       - "application/json"
       produces:
@@ -178,20 +205,65 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "New parameters of the profile"
+        description: "User that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/Profile"
+          $ref: "#/definitions/User"
+      responses:
+        '200':
+          description: Object found and returned
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          $ref: '#/responses/InvalidParameterInput'
+  /users/{id}:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: string
+    get:
+      operationId: getUserById
+      tags:
+      - "users"
+      summary: "Display a user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: Object found and returned
+          schema:
+            $ref: '#/definitions/User'
+        '404':
+          $ref: '#/responses/InvalidParameterInput'
+    patch:
+      operationId: updateUserById
+      tags:
+      - "users"
+      summary: "Update a user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "New parameters of the User"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
       responses:
         '204':
           description: Accepted; No response.
         '404':
           $ref: '#/responses/InvalidParameterInput'
     delete:
-      operationId: deleteProfileById
+      operationId: deleteUserById
       tags:
-      - "profile"
-      summary: "Delete a profile"
+      - "users"
+      summary: "Delete a users"
       consumes:
       - "application/json"
       produces:
@@ -202,7 +274,44 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
 
-  /message:
+  /chats/:
+    get:
+      operationId: getAllChats
+      tags:
+      - "message"
+      summary: "Get all Chats"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: Object found and returned
+          schema:
+            $ref: '#/definitions/Chats'
+        '404':
+          $ref: '#/responses/InvalidParameterInput'
+
+  /chats/{chatID}/messages:
+    parameters:
+      - in: path
+        required: true
+        name: chatID
+        type: string
+    get:
+      operationId: getAllMessagesForChat
+      tags:
+      - "message"
+      summary: "Add a new message"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: Object found and returned
+          schema:
+            $ref: '#/definitions/Messages'
+        '404':
+          $ref: '#/responses/InvalidParameterInput'
     post:
       operationId: createNewMessage
       tags:
@@ -226,8 +335,12 @@ paths:
             $ref: '#/definitions/Message'
         '404':
           $ref: '#/responses/InvalidParameterInput'
-  /message/{id}:
+  /chats/{chatID}/messages/{id}:
     parameters:
+      - in: path
+        required: true
+        name: chatID
+        type: string
       - in: path
         required: true
         name: id
@@ -284,41 +397,13 @@ paths:
         '404':
           $ref: '#/responses/InvalidParameterInput'
 
-  /feed:
-    get:
-      operationId: getFeed
-      parameters:
-        - in: query
-          name: location
-          required: true
-          type: string
-      tags:
-      - "feed"
-      summary: "Display a feed"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      responses:
-        '200':
-          description: Object found and returned
-          schema:
-            $ref: '#/definitions/Feed'
-        '404':
-          $ref: '#/responses/InvalidParameterInput'
+    
 
 securityDefinitions:
-  petstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:pets: "modify pets in your account"
-      read:pets: "read your pets"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
+  jwt:
+    type: apiKey
+    name: Authorization
+    in: header
 
 ### RESPONSES ###
 responses:
@@ -338,7 +423,7 @@ responses:
 
 ### DEFINITIONS ###
 definitions:
-  Profile:
+  User:
     type: "object"
     properties:
       id:
@@ -376,7 +461,7 @@ definitions:
         items:
           type: "string"
     xml:
-      name: "Profile"
+      name: "user"
     example:
       id: 5
       firstname: Marty
@@ -415,6 +500,20 @@ definitions:
         type: "boolean"
     xml:
       name: "Message"
+  Messages:
+    type: "array"
+    items:
+      $ref: '#/definitions/Message'
+  Chat:
+    type: "object"
+    #TODO
+    properties:
+      id:
+        type: "string"
+  Chats:
+    type: "array"
+    items:
+      $ref: '#/definitions/Chat'
   Offering:
     type: "object"
     properties:
@@ -467,7 +566,7 @@ definitions:
         format: "date-time"
     xml:
       name: "Comment"
-  Feed:
+  Offerings:
     type: "array"
     items:
       $ref: '#/definitions/Offering'
@@ -493,6 +592,15 @@ definitions:
     required:
       - attribute
       - message
+
+### UNCOMMENT THIS for codegen      
+#basePath: /v2/
+#schemes:
+# - http
+
+
+
+### UNCOMMENT THIS for swaggerhub
 # Added by API Auto Mocking Plugin
 host: virtserver.swaggerhub.com
 basePath: /TimMaa/Savood/1.0
