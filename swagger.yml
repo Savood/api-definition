@@ -400,13 +400,13 @@ paths:
     
 
 securityDefinitions:
-  jwt:
+  bearer:
     type: apiKey
     name: Authorization
     in: header
     
 security:
-  - jwt: []
+  - bearer: []
 
 ### RESPONSES ###
 responses:
