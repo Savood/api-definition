@@ -404,6 +404,9 @@ securityDefinitions:
     type: apiKey
     name: Authorization
     in: header
+    
+security:
+  - jwt: []
 
 ### RESPONSES ###
 responses:
