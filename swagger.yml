@@ -449,6 +449,14 @@ definitions:
         type: "string"
       description:
         type: "string"
+      savooded-offerings-id:
+        type: "array"
+        items:
+          type: "string"
+      created-offerings-id:
+        type: "array"
+        items:
+          type: "string"
       badges:
         type: "array"
         items:
@@ -456,7 +464,7 @@ definitions:
     xml:
       name: "user"
     example:
-      id: 5
+      id: "5"
       firstname: Marty
       lastname: McFlfy
       email: apiteam@swagger.io
@@ -473,15 +481,7 @@ definitions:
   Message:
     type: "object"
     properties:
-      id:
-        type: "string"
       from-id:
-        type: "integer"
-        format: "int64"
-      to-id:
-        type: "integer"
-        format: "int64"
-      offering-id:
         type: "integer"
         format: "int64"
       content:
@@ -489,8 +489,6 @@ definitions:
       time:
         type: "string"
         format: "date-time"
-      important:
-        type: "boolean"
     xml:
       name: "Message"
   Messages:
@@ -499,10 +497,17 @@ definitions:
       $ref: '#/definitions/Message'
   Chat:
     type: "object"
-    #TODO
     properties:
       id:
         type: "string"
+      user1-id:
+        type: "string"
+      user2-id:
+        type: "string"
+      offering-id:
+        type: "array"
+        items:
+          type: "string"
   Chats:
     type: "array"
     items:
@@ -529,36 +534,17 @@ definitions:
       requested-by:
         type: "integer"
         format: "int64"
-      total_likes:
+      total-savoods:
         type: "string"
-      total_savoods:
-        type: "string"
-      total_comments:
-        type: "string"
-      comments:
-        type: array
+      savooders:
+        type: "array"
         items:
-          $ref: '#/definitions/Comment'
+          type: "string"
       time:
         type: "string"
         format: "date-time"
     xml:
       name: "Offering"
-  Comment:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-      creator-id:
-        type: "integer"
-        format: "int64"
-      content:
-        type: "string"
-      time:
-        type: "string"
-        format: "date-time"
-    xml:
-      name: "Comment"
   Offerings:
     type: "array"
     items:
