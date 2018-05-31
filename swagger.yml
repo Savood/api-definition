@@ -481,9 +481,17 @@ definitions:
   Message:
     type: "object"
     properties:
-      from-id:
-        type: "integer"
-        format: "int64"
+      from:
+        type: "object"
+        properties:
+          user-id:
+            type: "string"
+          firstname:
+            type: "string"
+          lastname:
+            type: "string"
+          avatar-id:
+            type: "string"
       content:
         type: "string"
       time:
@@ -500,10 +508,17 @@ definitions:
     properties:
       id:
         type: "string"
-      user1-id:
-        type: "string"
-      user2-id:
-        type: "string"
+      partner:
+        type: "object"
+        properties:
+          user-id:
+            type: "string"
+          firstname:
+            type: "string"
+          lastname:
+            type: "string"
+          avatar-id:
+            type: "string"
       offering-id:
         type: "array"
         items:
