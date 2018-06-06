@@ -23,6 +23,7 @@ tags:
 paths:
   /healthcheck:
     get:
+      security: []
       operationId: "healthcheckGet"
       tags:
         - "health"
