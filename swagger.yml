@@ -449,14 +449,6 @@ definitions:
         type: "string"
       description:
         type: "string"
-      savooded-offerings-id:
-        type: "array"
-        items:
-          type: "string"
-      created-offerings-id:
-        type: "array"
-        items:
-          type: "string"
       badges:
         type: "array"
         items:
@@ -549,8 +541,6 @@ definitions:
       requested-by:
         type: "integer"
         format: "int64"
-      total-savoods:
-        type: "string"
       savooders:
         type: "array"
         items:
