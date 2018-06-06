@@ -556,6 +556,15 @@ definitions:
       $ref: '#/definitions/Offering'
     xml:
       name: "Feed"
+  Principal:
+    type: object
+    properties:
+      email:
+        type: string
+      userid:
+        type: string
+      username:
+        type: string
   ErrorModel:
     required:
       - code
