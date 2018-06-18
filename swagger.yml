@@ -34,9 +34,7 @@ paths:
         '200':
           description: Server is healthy
         '501':
-          description: Server is unhealthy
-          schema:
-            $ref: "#/responses/ErrorResponse"
+          $ref: "#/responses/Unhealthy"
   /feed:
     get:
       operationId: getFeed
@@ -411,6 +409,10 @@ responses:
       $ref: "#/definitions/ErrorModel"
   ErrorResponse:
     description: "Generic Error"
+    schema:
+      $ref: "#/definitions/ErrorModel"
+  Unhealthy:
+    description: Server is unhealthy
     schema:
       $ref: "#/definitions/ErrorModel"
   InvalidParameterInput:
