@@ -57,7 +57,9 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Offerings'
+            type: "array"
+            items:
+              $ref: '#/definitions/Offering'
         '400':
           $ref: '#/responses/InvalidParameterInput'
   /offerings:
@@ -81,7 +83,9 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Offerings'
+            type: "array"
+            items:
+              $ref: '#/definitions/Offering'
         '400':
           $ref: '#/responses/InvalidParameterInput'
     post:
@@ -178,7 +182,9 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Chats'
+            type: "array"
+            items:
+              $ref: '#/definitions/Chat'
         '400':
           $ref: '#/responses/InvalidParameterInput'
   /users:
@@ -277,7 +283,9 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Chats'
+            type: "array"
+            items:
+              $ref: '#/definitions/Chat'
         '400':
           $ref: '#/responses/InvalidParameterInput'
 
@@ -298,7 +306,9 @@ paths:
         '200':
           description: Object found and returned
           schema:
-            $ref: '#/definitions/Messages'
+            type: "array"
+            items:
+              $ref: '#/definitions/Message'
         '400':
           $ref: '#/responses/InvalidParameterInput'
     post:
@@ -476,20 +486,31 @@ definitions:
       background-id: ''
       description: I save the wrap and the world
       badges: [true,false,true,true,true,false,false,true,false]
+      
+      
+  UserShort:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      avatar-id:
+        type: "string"
+    xml:
+      name: "user"
+    example:
+      id: "5"
+      firstname: Marty
+      lastname: McFlfy
+      avatar-id: ''
   Message:
     type: "object"
     properties:
       from:
-        type: "object"
-        properties:
-          user-id:
-            type: "string"
-          firstname:
-            type: "string"
-          lastname:
-            type: "string"
-          avatar-id:
-            type: "string"
+        $ref: "#/definitions/UserShort"
       content:
         type: "string"
       time:
@@ -497,34 +518,19 @@ definitions:
         format: "date-time"
     xml:
       name: "Message"
-  Messages:
-    type: "array"
-    items:
-      $ref: '#/definitions/Message'
+      
   Chat:
     type: "object"
     properties:
       id:
         type: "string"
       partner:
-        type: "object"
-        properties:
-          user-id:
-            type: "string"
-          firstname:
-            type: "string"
-          lastname:
-            type: "string"
-          avatar-id:
-            type: "string"
+        $ref: "#/definitions/UserShort"
       offering-id:
         type: "array"
         items:
           type: "string"
-  Chats:
-    type: "array"
-    items:
-      $ref: '#/definitions/Chat'
+        
   Offering:
     type: "object"
     properties:
@@ -535,8 +541,7 @@ definitions:
       header:
         type: "string"
       creator-id:
-        type: "integer"
-        format: "int64"
+        type: "string"
       best-by-date:
         type: "string"
         format: "date"
@@ -547,21 +552,11 @@ definitions:
       requested-by:
         type: "integer"
         format: "int64"
-      savooders:
-        type: "array"
-        items:
-          type: "string"
       time:
         type: "string"
         format: "date-time"
     xml:
       name: "Offering"
-  Offerings:
-    type: "array"
-    items:
-      $ref: '#/definitions/Offering'
-    xml:
-      name: "Feed"
   Principal:
     type: object
     properties:
