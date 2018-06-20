@@ -435,7 +435,7 @@ definitions:
   User:
     type: "object"
     properties:
-      id:
+      _id:
         type: "string"
       firstname:
         type: "string"
@@ -472,7 +472,7 @@ definitions:
     xml:
       name: "user"
     example:
-      id: "5"
+      _id: "5"
       firstname: Marty
       lastname: McFlfy
       email: apiteam@swagger.io
@@ -491,7 +491,7 @@ definitions:
   UserShort:
     type: "object"
     properties:
-      id:
+      _id:
         type: "string"
       firstname:
         type: "string"
@@ -522,7 +522,7 @@ definitions:
   Chat:
     type: "object"
     properties:
-      id:
+      _id:
         type: "string"
       partner:
         $ref: "#/definitions/UserShort"
@@ -534,7 +534,7 @@ definitions:
   Offering:
     type: "object"
     properties:
-      id:
+      _id:
         type: "string"
       name:
         type: "string"
