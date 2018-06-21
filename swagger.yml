@@ -508,7 +508,7 @@ definitions:
     xml:
       name: "user"
     example:
-      id: "5"
+      _id: "5"
       firstname: Marty
       lastname: McFlfy
       avatarId: ''
@@ -537,12 +537,12 @@ definitions:
         items:
           type: "string"
     example:
-      id: "17"
+      _id: "17"
       partner:
         id: "5"
         firstname: Marty
         lastname: McFlfy
-        avatarId: ''
+        avatarId: '/assets/img/sarah-avatar.png.jpeg'
       offeringId: [1,2,3,4,5]
   Offering:
     type: "object"
@@ -568,7 +568,7 @@ definitions:
                 type: array
                 items:
                     type: number
-      avatar-url:
+      avatarUrl:
         type: "string"
       requested-by:
         type: "integer"
@@ -578,6 +578,16 @@ definitions:
         format: "date-time"
     xml:
       name: "Offering"
+    example:
+      _id: "string"
+      name: Normale Kartoffeln
+      header: Keine Ahnung
+      creator-id: "27"
+      best-by-date: "2018-06-21T13:55:58.380Z"
+      location: "Somewhere Over, The Rainbow"
+      avatarUrl: "/assets/img/sarah-avatar.png.jpeg"
+      requested-by: 12
+      time: "2018-06-21T13:55:58.380Z"
   Principal:
     type: object
     properties:
