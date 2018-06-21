@@ -568,7 +568,7 @@ definitions:
                 type: array
                 items:
                     type: number
-      avatarUrl:
+      avatarId:
         type: "string"
       requested-by:
         type: "integer"
@@ -582,10 +582,10 @@ definitions:
       _id: "string"
       name: Normale Kartoffeln
       header: Keine Ahnung
-      creator-id: "27"
+      creatorId: "27"
       best-by-date: "2018-06-21T13:55:58.380Z"
       location: "Somewhere Over, The Rainbow"
-      avatarUrl: "/assets/img/sarah-avatar.png.jpeg"
+      avatarId: "/assets/img/sarah-avatar.png.jpeg"
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
   Principal:
