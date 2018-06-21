@@ -538,7 +538,7 @@ definitions:
         type: "string"
       name:
         type: "string"
-      header:
+      description:
         type: "string"
       creator-id:
         type: "string"
