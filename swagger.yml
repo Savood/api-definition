@@ -40,9 +40,15 @@ paths:
       operationId: getFeed
       parameters:
         - in: query
-          name: location
+          description: Latitude
+          name: lat
           required: true
-          type: string
+          type: number
+        - in: query
+          description: Longitude
+          name: lon
+          required: true
+          type: number
         - in: query
           description: Distance in Meters
           name: distance
@@ -546,7 +552,15 @@ definitions:
         type: "string"
         format: "date"
       location:
-        type: "string"
+        type: object
+        properties:
+            type:
+                type: string
+            coordinates:
+                description: longitude then latidue as floats
+                type: array
+                items:
+                    type: number
       avatar-url:
         type: "string"
       requested-by:
