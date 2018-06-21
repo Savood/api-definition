@@ -465,9 +465,9 @@ definitions:
             format: "int64"
           city:
             type: "string"
-      avatar-id:
+      avatarId:
         type: "string"
-      background-id:
+      backgroundId:
         type: "string"
       description:
         type: "string"
@@ -488,8 +488,8 @@ definitions:
           number: 1337
           zip: 42069
           city: Musterstadt
-      avatar-id: ''
-      background-id: ''
+      avatarId: ''
+      backgroundId: ''
       description: I save the wrap and the world
       badges: [true,false,true,true,true,false,false,true,false]
       
@@ -503,7 +503,7 @@ definitions:
         type: "string"
       lastname:
         type: "string"
-      avatar-id:
+      avatarId:
         type: "string"
     xml:
       name: "user"
@@ -511,7 +511,7 @@ definitions:
       id: "5"
       firstname: Marty
       lastname: McFlfy
-      avatar-id: ''
+      avatarId: ''
   Message:
     type: "object"
     properties:
@@ -532,11 +532,18 @@ definitions:
         type: "string"
       partner:
         $ref: "#/definitions/UserShort"
-      offering-id:
+      offeringId:
         type: "array"
         items:
           type: "string"
-        
+    example:
+      id: "17"
+      partner:
+        id: "5"
+        firstname: Marty
+        lastname: McFlfy
+        avatarId: ''
+      offeringId: [1,2,3,4,5]
   Offering:
     type: "object"
     properties:
@@ -546,7 +553,7 @@ definitions:
         type: "string"
       description:
         type: "string"
-      creator-id:
+      creatorId:
         type: "string"
       best-by-date:
         type: "string"
