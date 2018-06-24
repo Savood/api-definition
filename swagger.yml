@@ -332,7 +332,7 @@ paths:
         description: "Message that needs to be added"
         required: true
         schema:
-          $ref: "#/definitions/Message"
+            $ref: '#/definitions/Message'
       responses:
         '200':
           description: Object found and returned
@@ -438,6 +438,18 @@ responses:
 
 ### DEFINITIONS ###
 definitions:
+  Address:
+    type: "object"
+    properties:
+        street:
+          type: "string"
+        number:
+          type: "string"
+        zip:
+          type: "integer"
+          format: "int64"
+        city:
+          type: "string"
   User:
     type: "object"
     properties:
@@ -450,21 +462,11 @@ definitions:
       email:
         type: "string"
         format: "email"
+      address:  
+        $ref: '#/definitions/Address'
       phone:
         type: "string"
         format: "phone"
-      address:
-        type: "object"
-        properties:
-          street:
-            type: "string"
-          number:
-            type: "string"
-          zip:
-            type: "integer"
-            format: "int64"
-          city:
-            type: "string"
       avatarId:
         type: "string"
       backgroundId:
@@ -539,7 +541,7 @@ definitions:
     example:
       _id: "17"
       partner:
-        id: "5"
+        _id: "5"
         firstname: Marty
         lastname: McFlfy
         avatarId: '/assets/img/sarah-avatar.png.jpeg'
@@ -558,6 +560,8 @@ definitions:
       best-by-date:
         type: "string"
         format: "date"
+      address:  
+        $ref: '#/definitions/Address'
       location:
         type: object
         properties:
@@ -585,7 +589,7 @@ definitions:
       creatorId: "27"
       best-by-date: "2018-06-21T13:55:58.380Z"
       location: "Somewhere Over, The Rainbow"
-      avatarId: "/assets/img/sarah-avatar.png.jpeg"
+      avatarId: "/assets/img/speakers/bear.jpg"
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
   Principal:
