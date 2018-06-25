@@ -403,6 +403,30 @@ paths:
           description: Removed; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+  /placeSavood:
+    post:
+      operationId: placeSavood
+      tags:
+      - "rpc-calls"
+      - "offering"
+      summary: "Places a savood on an offering"
+     
+      parameters:
+      - in: query
+        name: offeringId
+        type: string
+        description: The offering ID on which the savood should be placed. 
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        '200':
+          description: Savood is placed
+          schema:
+            $ref: '#/definitions/SuccessObject'
+        '400':
+          $ref: '#/responses/InvalidParameterInput'
 
     
 
@@ -594,6 +618,12 @@ definitions:
       avatarId: "/assets/img/speakers/bear.jpg"
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
+  SuccessObject:
+    type: object
+    properties:
+      success:
+        type: string
+
   Principal:
     type: object
     properties:
