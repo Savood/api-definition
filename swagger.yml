@@ -601,8 +601,6 @@ definitions:
         type: string
       userid:
         type: string
-      username:
-        type: string
   ErrorModel:
     required:
       - code
