@@ -198,6 +198,17 @@ paths:
         '500':
           $ref: '#/responses/ErrorResponse'
     get:
+      parameters:
+        - in: query
+          required: false
+          name: height
+          type: number
+          description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
+        - in: query
+          required: false
+          name: width
+          type: number
+          description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
       tags:
         - "offerings"
         - "image"
@@ -352,6 +363,17 @@ paths:
         - "users"
         - "image"
       summary: Gets the avatar image.
+      parameters:
+        - in: query
+          required: false
+          name: height
+          type: number
+          description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
+        - in: query
+          required: false
+          name: width
+          type: number
+          description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
       produces:
         - image/png
         - image/gif
