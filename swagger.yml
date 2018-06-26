@@ -172,6 +172,27 @@ paths:
           description: Removed; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+  /offering/{id}/image:
+    post:
+      summary: Uploads avatar image.
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: path
+          required: true
+          name: id
+          type: string
+        - in: formData
+          name: upfile
+          type: file
+          description: The file to upload.
+      responses:
+        '204':
+          description: Accepted; No response.
+        '400':
+          $ref: '#/responses/InvalidParameterInput'
+        '500':
+          $ref: '#/responses/ErrorResponse'
   /offerings/{id}/chats:
     parameters:
       - in: path
@@ -277,6 +298,28 @@ paths:
         '400':
           $ref: '#/responses/InvalidParameterInput'
 
+       
+  /users/{id}/image:
+    post:
+      summary: Uploads avatar image.
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: path
+          required: true
+          name: id
+          type: string
+        - in: formData
+          name: upfile
+          type: file
+          description: The file to upload.
+      responses:
+        '204':
+          description: Accepted; No response.
+        '400':
+          $ref: '#/responses/InvalidParameterInput'
+        '500':
+          $ref: '#/responses/ErrorResponse'
   /chats/:
     get:
       operationId: getAllChats
