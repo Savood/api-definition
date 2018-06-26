@@ -172,13 +172,16 @@ paths:
           description: Removed; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
-  /offering/{id}/image:
+  /offerings/{id}/image:
     parameters:
       - in: path
         required: true
         name: id
         type: string
     post:
+      tags:
+        - "offerings"
+        - "image"
       summary: Uploads avatar image.
       consumes:
         - multipart/form-data
@@ -195,6 +198,9 @@ paths:
         '500':
           $ref: '#/responses/ErrorResponse'
     get:
+      tags:
+        - "offerings"
+        - "image"
       summary: Gets the avatar image.
       produces:
         - image/png
@@ -321,6 +327,9 @@ paths:
         name: id
         type: string
     post:
+      tags:
+        - "users"
+        - "image"
       summary: Uploads avatar image.
       consumes:
         - multipart/form-data
@@ -337,6 +346,9 @@ paths:
         '500':
           $ref: '#/responses/ErrorResponse'
     get:
+      tags:
+        - "users"
+        - "image"
       summary: Gets the avatar image.
       produces:
         - image/png
@@ -481,7 +493,7 @@ paths:
       operationId: placeSavood
       tags:
       - "rpc-calls"
-      - "offering"
+      - "offerings"
       summary: "Places a savood on an offering"
      
       parameters:
