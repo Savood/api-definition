@@ -173,15 +173,16 @@ paths:
         '400':
           $ref: '#/responses/InvalidParameterInput'
   /offering/{id}/image:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: string
     post:
       summary: Uploads avatar image.
       consumes:
         - multipart/form-data
       parameters:
-        - in: path
-          required: true
-          name: id
-          type: string
         - in: formData
           name: upfile
           type: file
@@ -191,6 +192,20 @@ paths:
           description: Accepted; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '500':
+          $ref: '#/responses/ErrorResponse'
+    get:
+      summary: Gets the avatar image.
+      produces:
+        - image/png
+        - image/gif
+        - image/jpeg
+        - application/json
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/responses/NotFound'
         '500':
           $ref: '#/responses/ErrorResponse'
   /offerings/{id}/chats:
@@ -300,15 +315,16 @@ paths:
 
        
   /users/{id}/image:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: string
     post:
       summary: Uploads avatar image.
       consumes:
         - multipart/form-data
       parameters:
-        - in: path
-          required: true
-          name: id
-          type: string
         - in: formData
           name: upfile
           type: file
@@ -318,6 +334,20 @@ paths:
           description: Accepted; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '500':
+          $ref: '#/responses/ErrorResponse'
+    get:
+      summary: Gets the avatar image.
+      produces:
+        - image/png
+        - image/gif
+        - image/jpeg
+        - application/json
+      responses:
+        '200':
+          description: OK
+        '404':
+          $ref: '#/responses/NotFound'
         '500':
           $ref: '#/responses/ErrorResponse'
   /chats/:
