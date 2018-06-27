@@ -117,6 +117,8 @@ paths:
             $ref: '#/definitions/Offering'
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/Unauthorized'
         '500':
           $ref: '#/responses/ErrorResponse'
   /offerings/{id}:
