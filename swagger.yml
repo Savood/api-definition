@@ -82,7 +82,7 @@ paths:
             - requested
       tags:
       - "offerings"
-      summary: "Display a feed of nearby offerings"
+      summary: "Display owned or requested offerings"
       produces:
       - "application/json"
       responses:
