@@ -172,7 +172,7 @@ paths:
           description: Removed; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
-  /offerings/{id}/image:
+  /offerings/{id}/image.jpeg:
     parameters:
       - in: path
         required: true
@@ -195,6 +195,8 @@ paths:
           description: Accepted; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/Unauthorized'
         '500':
           $ref: '#/responses/ErrorResponse'
     get:
@@ -331,7 +333,7 @@ paths:
           $ref: '#/responses/InvalidParameterInput'
 
 
-  /users/{id}/image:
+  /users/{id}/image.jpeg:
     parameters:
       - in: path
         required: true
@@ -354,6 +356,63 @@ paths:
           description: Accepted; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/Unauthorized'
+        '500':
+          $ref: '#/responses/ErrorResponse'
+    get:
+      tags:
+        - "users"
+        - "image"
+      summary: Gets the avatar image.
+      parameters:
+        - in: query
+          required: false
+          name: height
+          type: number
+          description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
+        - in: query
+          required: false
+          name: width
+          type: number
+          description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
+      produces:
+        - image/jpeg
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: file
+        '404':
+          $ref: '#/responses/NotFound'
+        '500':
+          $ref: '#/responses/ErrorResponse'
+  /users/{id}/backgroundimage.jpeg:
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: string
+    post:
+      tags:
+        - "users"
+        - "image"
+      summary: Uploads avatar image.
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: upfile
+          type: file
+          description: The file to upload.
+      responses:
+        '204':
+          description: Accepted; No response.
+        '400':
+          $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/Unauthorized'
         '500':
           $ref: '#/responses/ErrorResponse'
     get:
@@ -600,10 +659,6 @@ definitions:
       phone:
         type: "string"
         format: "phone"
-      avatarId:
-        type: "string"
-      backgroundId:
-        type: "string"
       description:
         type: "string"
       badges:
@@ -637,8 +692,6 @@ definitions:
       firstname:
         type: "string"
       lastname:
-        type: "string"
-      avatarId:
         type: "string"
     xml:
       name: "user"
@@ -705,8 +758,6 @@ definitions:
                 type: array
                 items:
                     type: number
-      avatarId:
-        type: "string"
       requested-by:
         type: "integer"
         format: "int64"
