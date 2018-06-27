@@ -214,8 +214,6 @@ paths:
         - "image"
       summary: Gets the avatar image.
       produces:
-        - image/png
-        - image/gif
         - image/jpeg
         - application/json
       responses:
@@ -332,7 +330,7 @@ paths:
         '400':
           $ref: '#/responses/InvalidParameterInput'
 
-       
+
   /users/{id}/image:
     parameters:
       - in: path
@@ -375,8 +373,6 @@ paths:
           type: number
           description: If either width or height is set to 0, it will be set to an aspect ratio preserving value.
       produces:
-        - image/png
-        - image/gif
         - image/jpeg
         - application/json
       responses:
@@ -521,12 +517,12 @@ paths:
       - "rpc-calls"
       - "offerings"
       summary: "Places a savood on an offering"
-     
+
       parameters:
       - in: query
         name: offeringId
         type: string
-        description: The offering ID on which the savood should be placed. 
+        description: The offering ID on which the savood should be placed.
       consumes:
       - "application/json"
       produces:
@@ -539,14 +535,14 @@ paths:
         '400':
           $ref: '#/responses/InvalidParameterInput'
 
-    
+
 
 securityDefinitions:
   bearer:
     type: apiKey
     name: Authorization
     in: header
-    
+
 security:
   - bearer: []
 
@@ -599,7 +595,7 @@ definitions:
       email:
         type: "string"
         format: "email"
-      address:  
+      address:
         $ref: '#/definitions/Address'
       phone:
         type: "string"
@@ -631,8 +627,8 @@ definitions:
       backgroundId: ''
       description: I save the wrap and the world
       badges: [true,false,true,true,true,false,false,true,false]
-      
-      
+
+
   UserShort:
     type: "object"
     properties:
@@ -663,7 +659,7 @@ definitions:
         format: "date-time"
     xml:
       name: "Message"
-      
+
   Chat:
     type: "object"
     properties:
@@ -697,7 +693,7 @@ definitions:
       best-by-date:
         type: "string"
         format: "date"
-      address:  
+      address:
         $ref: '#/definitions/Address'
       location:
         type: object
@@ -763,7 +759,7 @@ definitions:
       - attribute
       - message
 
-### UNCOMMENT THIS for codegen      
+### UNCOMMENT THIS for codegen
 #basePath: /v2/
 #schemes:
 # - http
