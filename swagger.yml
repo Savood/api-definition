@@ -143,6 +143,8 @@ paths:
           $ref: '#/responses/InvalidParameterInput'
         '404':
           $ref: '#/responses/NotFound'
+        '500':
+          $ref: '#/responses/ErrorResponse'
     patch:
       operationId: updateOfferingById
       tags:
@@ -735,7 +737,7 @@ definitions:
         lastname: McFlfy
         avatarId: '/assets/img/sarah-avatar.png.jpeg'
       offeringId: [1,2,3,4,5]
-      
+
   Offering:
     type: "object"
     properties:
@@ -778,7 +780,7 @@ definitions:
       best-by-date: "2018-06-21"
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
-      location: 
+      location:
         - coordinates: [50.5636277, 9.6711443]
   SuccessObject:
     type: object
