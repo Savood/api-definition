@@ -141,6 +141,8 @@ paths:
             $ref: '#/definitions/Offering'
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '404':
+          $ref: '#/responses/NotFound'
     patch:
       operationId: updateOfferingById
       tags:
@@ -701,7 +703,6 @@ definitions:
       _id: "5"
       firstname: Marty
       lastname: McFlfy
-      avatarId: ''
   Message:
     type: "object"
     properties:
@@ -734,6 +735,7 @@ definitions:
         lastname: McFlfy
         avatarId: '/assets/img/sarah-avatar.png.jpeg'
       offeringId: [1,2,3,4,5]
+      
   Offering:
     type: "object"
     properties:
@@ -770,14 +772,14 @@ definitions:
       name: "Offering"
     example:
       _id: "string"
-      name: Normale Kartoffeln
-      header: Keine Ahnung
+      name: "Normale Kartoffeln"
+      description: "Die Lagen hier so rum, kp mehr von wann, aber was solls. ich brauche Sie nicht mehr. Also nur zu Savooded mich ihr Jünger"
       creatorId: "27"
-      best-by-date: "2018-06-21T13:55:58.380Z"
-      location: "Somewhere Over, The Rainbow"
-      avatarId: "/assets/img/speakers/bear.jpg"
+      best-by-date: "2018-06-21"
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
+      location: 
+        - coordinates: [50.5636277, 9.6711443]
   SuccessObject:
     type: object
     properties:
