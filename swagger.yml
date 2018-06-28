@@ -178,6 +178,10 @@ paths:
           description: Removed; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/ErrorResponse'
+        '500':
+          $ref: '#responses/ErrorResponse'
   /offerings/{id}/image.jpeg:
     parameters:
       - in: path
