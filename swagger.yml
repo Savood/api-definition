@@ -68,6 +68,8 @@ paths:
               $ref: '#/definitions/Offering'
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '500':
+          $ref: '#/responses/ErrorResponse'
   /offerings:
     get:
       operationId: getOfferings
