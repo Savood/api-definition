@@ -181,7 +181,7 @@ paths:
         '403':
           $ref: '#/responses/ErrorResponse'
         '500':
-          $ref: '#responses/ErrorResponse'
+          $ref: '#/responses/ErrorResponse'
   /offerings/{id}/image.jpeg:
     parameters:
       - in: path
