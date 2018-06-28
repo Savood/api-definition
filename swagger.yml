@@ -166,6 +166,12 @@ paths:
           description: Accepted; No response.
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/ErrorResponse'
+        '404':
+          $ref: '#/responses/NotFound'
+        '500':
+          $ref: '#/responses/ErrorResponse'
     delete:
       operationId: deleteOfferingById
       tags:
