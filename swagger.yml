@@ -747,7 +747,6 @@ definitions:
         _id: "5"
         firstname: Marty
         lastname: McFlfy
-        avatarId: '/assets/img/sarah-avatar.png.jpeg'
       offeringId: [1,2,3,4,5]
 
   Offering:
@@ -759,8 +758,8 @@ definitions:
         type: "string"
       description:
         type: "string"
-      creatorId:
-        type: "string"
+      creator:
+        $ref: "#/definitions/UserShort"
       best-by-date:
         type: "string"
         format: "date"
@@ -785,10 +784,13 @@ definitions:
     xml:
       name: "Offering"
     example:
-      _id: "string"
+      _id: "123"
       name: "Normale Kartoffeln"
       description: "Die Lagen hier so rum, kp mehr von wann, aber was solls. ich brauche Sie nicht mehr. Also nur zu Savooded mich ihr Jünger"
-      creatorId: "27"
+      creator:
+        _id: "5"
+        firstname: Marty
+        lastname: McFlfy
       best-by-date: "2018-06-21"
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
