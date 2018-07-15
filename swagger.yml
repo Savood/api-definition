@@ -656,8 +656,7 @@ definitions:
         number:
           type: "string"
         zip:
-          type: "integer"
-          format: "int64"
+          type: "string"
         city:
           type: "string"
   User:
@@ -693,13 +692,18 @@ definitions:
       phone: 202-555-0191
       address:
           street: Musterstraße
-          number: 1337
-          zip: 42069
+          number: "1337"
+          zip: "42069"
           city: Musterstadt
       avatarId: ''
       backgroundId: ''
       description: I save the wrap and the world
-      badges: [true,false,true,true,true,false,false,true,false]
+      badges: [
+        "SAVOOD_1",
+        "SAVOOD_5",
+        "SAVOOD_10",
+        "MESSAGE_1",
+        ]
 
 
   UserShort:
@@ -795,7 +799,12 @@ definitions:
       requested-by: 12
       time: "2018-06-21T13:55:58.380Z"
       location:
-        - coordinates: [50.5636277, 9.6711443]
+        coordinates: [50.5636277, 9.6711443]
+      address:
+          street: Musterstraße
+          number: "1337"
+          zip: "42069"
+          city: Musterstadt
   SuccessObject:
     type: object
     properties:
