@@ -611,7 +611,28 @@ paths:
             $ref: '#/definitions/SuccessObject'
         '400':
           $ref: '#/responses/InvalidParameterInput'
+  /unSavood:
+    post:
+      operationId: unSavood
+      tags:
+      - "rpc-calls"
+      - "offerings"
+      summary: "Places a savood on an offering"
 
+      parameters:
+      - in: query
+        name: offeringId
+        type: string
+        description: The offering ID on which the savood should be placed.
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        '204':
+          description: Savood is deleted
+        '400':
+          $ref: '#/responses/InvalidParameterInput'
 
 
 securityDefinitions:
