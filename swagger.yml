@@ -614,6 +614,8 @@ paths:
           $ref: '#/responses/InvalidParameterInput'
         '403':
           $ref: '#/responses/ErrorResponse'
+        '404':
+          $ref: '#/responses/NotFound'
   /unSavood:
     post:
       operationId: unSavood
@@ -633,12 +635,16 @@ paths:
       produces:
       - "application/json"
       responses:
-        '204':
+        '200':
           description: Savood is deleted
+          schema:
+            $ref: '#/definitions/SuccessObject'
         '400':
           $ref: '#/responses/InvalidParameterInput'
         '403':
           $ref: '#/responses/ErrorResponse'
+        '404':
+          $ref: '#/responses/NotFound'
 
 
 securityDefinitions:
