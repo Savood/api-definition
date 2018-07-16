@@ -600,6 +600,7 @@ paths:
         name: offeringId
         type: string
         description: The offering ID on which the savood should be placed.
+        required: true
       consumes:
       - "application/json"
       produces:
@@ -626,6 +627,7 @@ paths:
         name: offeringId
         type: string
         description: The offering ID on which the savood should be placed.
+        required: true
       consumes:
       - "application/json"
       produces:
