@@ -736,12 +736,22 @@ definitions:
         type: "string"
       lastname:
         type: "string"
+      badges:
+        type: "array"
+        items:
+          type: "string"
     xml:
       name: "user"
     example:
       _id: "5"
       firstname: Marty
       lastname: McFlfy
+      badges: [
+        "SAVOOD_1",
+        "SAVOOD_5",
+        "SAVOOD_10",
+        "MESSAGE_1",
+        ]
   Message:
     type: "object"
     properties:
@@ -806,6 +816,8 @@ definitions:
       time:
         type: "string"
         format: "date-time"
+      savooded:
+        type: "boolean"
     xml:
       name: "Offering"
     example:
@@ -826,6 +838,7 @@ definitions:
           number: "1337"
           zip: "42069"
           city: Musterstadt
+      savooded: true
   SuccessObject:
     type: object
     properties:
