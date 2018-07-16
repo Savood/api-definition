@@ -96,6 +96,8 @@ paths:
               $ref: '#/definitions/Offering'
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '500':
+          $ref: '#/responses/ErrorResponse'
     post:
       operationId: createNewOffering
       tags:
