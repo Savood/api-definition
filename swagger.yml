@@ -611,6 +611,8 @@ paths:
             $ref: '#/definitions/SuccessObject'
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/ErrorResponse'
   /unSavood:
     post:
       operationId: unSavood
@@ -633,6 +635,8 @@ paths:
           description: Savood is deleted
         '400':
           $ref: '#/responses/InvalidParameterInput'
+        '403':
+          $ref: '#/responses/ErrorResponse'
 
 
 securityDefinitions:
