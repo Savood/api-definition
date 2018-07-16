@@ -616,6 +616,8 @@ paths:
           $ref: '#/responses/ErrorResponse'
         '404':
           $ref: '#/responses/NotFound'
+        '500':
+          $ref: '#/responses/ErrorResponse'
   /unSavood:
     post:
       operationId: unSavood
@@ -645,6 +647,8 @@ paths:
           $ref: '#/responses/ErrorResponse'
         '404':
           $ref: '#/responses/NotFound'
+        '500':
+          $ref: '#/responses/ErrorResponse'
 
 
 securityDefinitions:
