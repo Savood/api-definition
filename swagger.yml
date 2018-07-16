@@ -843,7 +843,7 @@ definitions:
     type: object
     properties:
       success:
-        type: string
+        type: boolean
 
   Principal:
     type: object
