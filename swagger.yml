@@ -813,7 +813,7 @@ definitions:
         type: "string"
       creator:
         $ref: "#/definitions/UserShort"
-      best-by-date:
+      bestByDate:
         type: "string"
         format: "date"
       address:
@@ -828,7 +828,7 @@ definitions:
                 type: array
                 items:
                     type: number
-      requested-by:
+      requestedBy:
         type: "integer"
         format: "int64"
       time:
@@ -846,8 +846,8 @@ definitions:
         _id: "5"
         firstname: Marty
         lastname: McFlfy
-      best-by-date: "2018-06-21"
-      requested-by: 12
+      bestByDate: "2018-06-21"
+      requestedBy: 12
       time: "2018-06-21T13:55:58.380Z"
       location:
         coordinates: [50.5636277, 9.6711443]
